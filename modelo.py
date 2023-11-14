@@ -19,11 +19,17 @@ class Programa:
     def dar_like(self):
         self.__likes += 1
 
+    def __str__(self):
+        return f'Nome: {self.nome}  Ano: {self.ano} Likes: {self.likes}'
+
 
 class Filme (Programa):
     def __init__(self, nome, ano, duracao):
         super().__init__(nome, ano)
         self.duracao = duracao
+
+    def __str__(self):
+        return f'Nome: {self.nome}  Ano: {self.ano} Duração: {self.duracao} Likes: {self.likes}'
 
 
 class Serie (Programa):
@@ -31,13 +37,14 @@ class Serie (Programa):
         super().__init__(nome, ano)
         self.temporadas = temporadas
 
+    def __str__(self):
+        return f'Nome: {self.nome}  Ano: {self.ano} Temporadas: {self.temporadas} Likes: {self.likes}'
+
 
 filme = Filme("doutor estranho", 2013, 260)
 filme.dar_like()
 filme.dar_like()
 filme.dar_like()
-print("Nome: {} Ano: {} Duração: {} Likes: {}".
-      format(filme.nome, filme.ano, filme.duracao, filme.likes))
 
 
 serie = Serie("dr. house", 2012, 8)
@@ -46,5 +53,8 @@ serie.dar_like()
 serie.dar_like()
 serie.dar_like()
 serie.dar_like()
-print("Nome: {} Ano: {} Temporadas: {} Likes: {}".
-      format(serie.nome, serie.ano, serie.temporadas, serie.likes))
+
+programacao = [filme, serie]
+
+for programa in programacao:
+    print(programa)
